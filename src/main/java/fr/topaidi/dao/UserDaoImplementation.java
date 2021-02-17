@@ -1,15 +1,15 @@
 package fr.topaidi.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.transaction.HeuristicMixedException;
 import javax.transaction.HeuristicRollbackException;
 import javax.transaction.NotSupportedException;
 import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
-
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import com.sun.tools.javac.util.List;
 
 import fr.topaidi.entite.Users;
 
@@ -56,7 +56,11 @@ public class UserDaoImplementation implements UserDao {
 
 	public boolean verifUser(String email, String pass) {
 		// TODO Auto-generated method stub
-		List<Users> user = (List<Users>) em.createQuery("select u from users u where u.email = :email ", Users.class).setParameter("email", email).getResultList();
+		Query  query = em.createQuery("select u from Users u where u.email = :email And u.password = :pass ", Users.class);
+		query.setParameter("email", email);
+		query.setParameter("pass", pass);
+		
+		List<Users> user = (List<Users>) query.getResultList();
 
         if ( user.isEmpty() ){
         	return true;

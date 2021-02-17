@@ -1,10 +1,7 @@
 package fr.topaidi.router;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -54,6 +51,7 @@ public class UserServlet extends HttpServlet{
 			user.setEmail( req.getParameter("email") );
 			user.setNom( req.getParameter("nom"), req.getParameter("prenom") );
 			user.setPassword( req.getParameter("password") );
+			user.setCreatedAt(new Date());
 			   
 			/* Ajout de l'utilisateur dans la BDD */
 			userService.addUser(user);
