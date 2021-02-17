@@ -20,7 +20,7 @@ public class ConnexionServlet extends HttpServlet{
 			this.getServletContext().getRequestDispatcher("/WEB-INF/pages/inscription.jsp").forward(req, resp);
 		}
 		// Affichage formulaire connexion
-		else if(!(req.getParameter("action").equals("connexion")))
+		else if(req.getParameter("action").equals("connexion"))
 		{
 		   this.getServletContext().getRequestDispatcher("/WEB-INF/pages/connexion.jsp").forward(req, resp);
 		}
