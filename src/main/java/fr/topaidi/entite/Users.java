@@ -15,6 +15,7 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String email;
     private String fName;
     private String lName;
     private String password;
@@ -26,6 +27,14 @@ public class Users {
     
     @OneToMany(mappedBy = "user")
     private List<Idea> idees = new ArrayList<Idea>();
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
     
     public String getNom() {
         return fName + ' ' + lName;

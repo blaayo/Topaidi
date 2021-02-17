@@ -17,20 +17,26 @@
 						<h3>S'inscrire</h3>
 					</div>
 		
-					<div class="card-content">
+					<form action="connexion" method="post" class="card-content">
+						
 						<div class="form-field">
-							<label for="username">Identifiant</label>
-							<input type="text" id="username">
+							<label for="nom">Nom</label>
+							<input type="text" name="nom" required>
+						</div><br>
+						
+						<div class="form-field">
+							<label for="prenom">Prenom</label>
+							<input type="text" name="prenom" required>
+						</div><br>
+					
+						<div class="form-field">
+							<label for="email">E-mail</label>
+							<input type="email" name="email" required>
 						</div><br>
 		
 						<div class="form-field">
 							<label for="password">Mot de passe</label>
-							<input type="password" id="password">
-						</div><br>
-		
-						<div class="form-field">
-							<label for="password">Verifier mot de passe</label>
-							<input type="password" id="password">
+							<input type="password" name="password" required>
 						</div><br>
 						
 						<div class="form-field">
@@ -38,9 +44,10 @@
 						</div><br>
 		
 						<div class="form-field">
-							<button class="btn-large waves-effect waves-dark" style="width:100%;">s'inscrire</button>
+							<input type="hidden" name="actionPost" value="inscription" id="password">
+							<button class="btn-large waves-effect waves-dark" type="submit" style="width:100%;">s'inscrire</button>
 						</div><br>
-					</div>
+					</form>
 		
 				</div>
 			</div>

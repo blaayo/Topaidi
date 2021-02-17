@@ -17,15 +17,18 @@
 						<h3>Se connecter</h3>
 					</div>
 		
-					<div class="card-content">
+					<form action="connexion" method="post" class="card-content">
+		
+						<div class="form-field">${error}</div><br>
+						
 						<div class="form-field">
-							<label for="username">Identifiant</label>
-							<input type="text" id="username">
+							<label for="email">Adresse mail</label>
+							<input type="email" name="email" required>
 						</div><br>
 		
 						<div class="form-field">
 							<label for="password">Mot de passe</label>
-							<input type="password" id="password">
+							<input type="password" name="password" required>
 						</div><br>
 		
 						<div class="form-field">
@@ -33,9 +36,10 @@
 						</div><br>
 		
 						<div class="form-field">
+							<input type="hidden" name="actionPost" value="connexion">
 							<button class="btn-large waves-effect waves-dark" style="width:100%;">connexion</button>
 						</div><br>
-					</div>
+					</form>
 		
 				</div>
 			</div>
