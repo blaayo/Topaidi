@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
 <nav>
@@ -14,7 +14,7 @@
 	        	<li><a href="connexion?action=disconnect"><i class="material-icons">logout</i></a></li>
 	    	</c:when>    
 	    	<c:otherwise>
-	        	<li><a href="connexion?action=disconnect"><i class="material-icons">login</i></a></li>
+	        	<li><a href="connexion?action=connexion"><i class="material-icons">login</i></a></li>
 		    </c:otherwise>
 		</c:choose>
       </ul>

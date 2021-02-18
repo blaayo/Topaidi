@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -14,8 +14,8 @@
 			
 			<div class="nav-header center" style="padding:50px;">
 	
-			   <h1>Ajouter votre idée</h1>
-			   <div class="tagline">Blablbla pour votre idée !</div>
+			   <h1>Ajouter votre idÃ©e</h1>
+			   <div class="tagline">Blablbla pour votre idÃ©e !</div>
 			
 			</div>
 			
@@ -59,7 +59,7 @@
 				    </div>
 				    <div class="center-align">
 				      	<input type="hidden" name="create">
-				    	<button class="waves-effect waves-light btn-large" type="submit">Créer</button>
+				    	<button class="waves-effect waves-light btn-large" type="submit">CrÃ©er</button>
 					</div>
 				  </form>
 				</div>
