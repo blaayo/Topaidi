@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet("/")
@@ -14,6 +15,9 @@ public class HomeServlet extends HttpServlet{
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
-	   this.getServletContext().getRequestDispatcher("/WEB-INF/pages/home.jsp").forward(req, resp);
+		HttpSession session = req.getSession();
+		req.setAttribute("isConnect", session.getAttribute("isConnect"));
+		
+		this.getServletContext().getRequestDispatcher("/WEB-INF/pages/home.jsp").forward(req, resp);
 	}
 }

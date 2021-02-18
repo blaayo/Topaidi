@@ -9,7 +9,14 @@
         <li><a href="home">Acceuil</a></li>
         <li><a href="idee?action=classement">Classement</a></li>
         <li><a href="idee?action=create">Ajouter</a></li>
-        <li><a href="connexion?action=connexion"><i class="material-icons">exit_to_app</i></a></li>
+        <c:choose>
+	      	<c:when test="${isConnect == true}">
+	        	<li><a href="connexion?action=disconnect"><i class="material-icons">logout</i></a></li>
+	    	</c:when>    
+	    	<c:otherwise>
+	        	<li><a href="connexion?action=disconnect"><i class="material-icons">login</i></a></li>
+		    </c:otherwise>
+		</c:choose>
       </ul>
     </div>
 </nav>

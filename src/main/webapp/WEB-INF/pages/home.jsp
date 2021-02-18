@@ -15,7 +15,7 @@
 			<div class="nav-header center" style="padding:50px;">
 	
 			   <h1>Bienvenu sur TOPAIDI</h1>
-			   <div class="tagline"><a class="waves-effect waves-light btn-small" href="idee?action=create" >Ajouter une idée</a></div>
+			   <div class="tagline"><a class="waves-effect waves-light btn-large" href="idee?action=create" >Ajouter une idée</a></div>
 			
 			</div>
 			

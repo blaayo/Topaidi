@@ -18,6 +18,8 @@
 					</div>
 		
 					<form action="connexion" method="post" class="card-content">
+		
+						<div class="form-field">${error}</div><br>
 						
 						<div class="form-field">
 							<label for="nom">Nom</label>

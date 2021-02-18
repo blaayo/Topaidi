@@ -36,6 +36,12 @@ public class UserServiceImplementation implements UserService {
 		return userDao.verifUser(email, pass);
 	}
 
+	public boolean verifEmailUser(String email) {
+		// TODO Auto-generated method stub
+		UserDao userDao = new UserDaoImplementation(em, utx);
+		return userDao.verifEmailUser(email);
+	}
+
 	public Users getUser(int id) {
 		// TODO Auto-generated method stub
 		UserDao userDao = new UserDaoImplementation(em, utx);

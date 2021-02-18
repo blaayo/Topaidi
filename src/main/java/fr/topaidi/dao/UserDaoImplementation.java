@@ -1,6 +1,7 @@
 package fr.topaidi.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -56,19 +57,22 @@ public class UserDaoImplementation implements UserDao {
 
 	public boolean verifUser(String email, String pass) {
 		// TODO Auto-generated method stub
-		Query  query = em.createQuery("select u from Users u where u.email = :email And u.password = :pass ", Users.class);
+		String sql   = "select u from Users u where u.email = :email And u.password = :pass ";		
+		Query  query = em.createQuery(sql, Users.class);
 		query.setParameter("email", email);
 		query.setParameter("pass", pass);
 		
 		List<Users> user = (List<Users>) query.getResultList();
-
-        if ( user.isEmpty() ){
-        	return true;
-        } else {
-        	return false;
-        }
+		return user.isEmpty();
 	}
 
+	public boolean verifEmailUser(String email) {
+		// TODO Auto-generated method stub
+		Query  query = em.createQuery("select u from Users u where u.email = :email", Users.class).setParameter("email", email);
+		List<Users> user = (List<Users>) query.getResultList();		
+		return user.isEmpty();
+	}
+	
 	public Users getUser(int id) {
 		return em.find(Users.class, id);
 	}
