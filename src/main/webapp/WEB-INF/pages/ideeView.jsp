@@ -79,6 +79,13 @@
 		</div>
 		
 		<%@include file="commons/footer.jsp" %>
+		<script type="text/javascript">
+			document.addEventListener('DOMContentLoaded', function() {
+			    var elems = document.querySelectorAll('.materialboxed');
+			    var instances = M.Materialbox.init(elems, options);
+			  });
+		</script>
 			
 	</body>
 </html>
+

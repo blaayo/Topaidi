@@ -1,7 +1,6 @@
 package fr.topaidi.router;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,8 +11,9 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/idee")
 public class IdeeServlet extends HttpServlet{
-
-	 protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {
 		HttpSession session = req.getSession();
 		

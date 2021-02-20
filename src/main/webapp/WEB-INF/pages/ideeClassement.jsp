@@ -21,7 +21,7 @@
 			
 			<div class="row">
 				<!-- Temporaire -->
-				<% for(int i = 0; i < 6; i+=1) { %>
+				<% for(int i = 0; i < 5; i+=1) { %>
 					<div class="col s10 m4">
 					  <div class="card">
 					    <div class="card-image">
