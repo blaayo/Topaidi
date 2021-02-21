@@ -18,14 +18,12 @@ public class IdeeDaoImplementation implements IdeeDao {
 	}
 
 	public List<Idea> getListIdee() {
-		// TODO Auto-generated method stub
 		return em.createQuery("SELECT i FROM Idea i", Idea.class).getResultList();
 	}
 
 	public List<Idea> getIdeeClassement() {
-		// TODO Auto-generated method stub
-		return em.createQuery("SELECT i FROM Idea i", Idea.class).getResultList();
+		// Ne fonctionne pas, la requete est bizzare !
+		return em.createQuery("SELECT i FROM Idea i group by i.id order by i.top DESC, SUM(i.top + i.flop) DESC, i.createdAt DESC", Idea.class).getResultList();
 	}
-	
 	
 }

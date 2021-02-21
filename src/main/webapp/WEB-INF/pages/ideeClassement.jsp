@@ -20,24 +20,24 @@
 			</div>
 			
 			<div class="row">
-				<!-- Temporaire -->
-				<% for(int i = 0; i < 5; i+=1) { %>
+				<c:forEach var="idee" items="${listIdeeClassement}" >
+				
 					<div class="col s10 m4">
 					  <div class="card">
 					    <div class="card-image">
-					      <img src="https://data.photofunky.net/output/image/3/6/1/7/361786/photofunky.gif">
-					      <span class="card-title"><b>IDEE</b></span>
+					      <img src="${idee.getImage()}">
+					      <span class="card-title"><b>${idee.getNom()}</b></span>
 					    </div>
 					    <div class="card-content">
-					      <p>Une description ... I am a very simple card. I am good at containing small bits of information.
-					      I am convenient because I require little markup to use effectively.</p>
+					      <p>${idee.getSubDescription()}</p>
 					    </div>
 					    <div class="card-action">
-					      <a href="idee?action=view&view=id">Voir plus</a>
+					      <a href="idee?action=view&view=${idee.getId()}">Voir plus<b class="right">${idee.getTop()}<i class="material-icons right">thumb_up</i></b></a>
 					    </div>
 					  </div>
 					</div>
-				<% } %>
+					
+				</c:forEach>
 			</div>
 			  
 		</div>

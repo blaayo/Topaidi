@@ -8,4 +8,5 @@ public interface IdeeDao {
 	
 	List<Idea> getListIdee();
 	List<Idea> getIdeeClassement();
+	
 }

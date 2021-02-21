@@ -29,6 +29,10 @@ public class IdeeServiceImplementation implements IdeeService {
 		return  ideeDao.getListIdee();
 		
 	}
-	
+
+	public List<Idea> getIdeeClassement() {
+		IdeeDao ideeDao = new IdeeDaoImplementation(em, utx);
+		return  ideeDao.getIdeeClassement();
+	}
 	
 }

@@ -21,8 +21,6 @@ public class Vote {
     @ManyToOne
     @JoinColumn(name = "idea_id")
     private Idea idea;
-    // 0 equals to flop and 1 equals to top
-    private int vote;
     
     public Users getUser() {
         return user;
@@ -42,15 +40,4 @@ public class Vote {
         this.idea = idea;
     }
 
- 
-
-    public int getVote() {
-        return vote;
-    }
-
- 
-
-    public void setVote(int vote) {
-        this.vote = vote;
-    }
 }

@@ -1,6 +1,8 @@
 package fr.topaidi.router;
 
 import java.io.IOException;
+
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,9 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.topaidi.service.IdeeService;
+
 
 @WebServlet("/idee")
 public class IdeeServlet extends HttpServlet{
+	
+
+	@EJB
+	private IdeeService ideeService;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
@@ -21,6 +29,7 @@ public class IdeeServlet extends HttpServlet{
 			
 		if(req.getParameter("action").equals("classement")) 
 		{
+			req.setAttribute("listIdeeClassement", ideeService.getIdeeClassement());
 			this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ideeClassement.jsp").forward(req, resp);
 		}
 		else if( null == session.getAttribute("isConnect"))
