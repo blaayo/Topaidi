@@ -19,7 +19,7 @@ public class Users {
     private String fName;
     private String lName;
     private String password;
-    private Date createdAt;
+    private Date createdAt = new Date();
 
     
     @OneToMany(mappedBy = "user")

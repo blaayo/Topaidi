@@ -31,25 +31,15 @@ public class Commentaires {
         this.content = content;
     }
 
- 
-
     public Users getUser() {
         return user;
     }
-
- 
-
     public void setUser(Users user) {
         this.user = user;
     }
-
- 
-
     public Idea getIdea() {
         return idea;
     }
-
- 
 
     public void setIdea(Idea idea) {
         this.idea = idea;

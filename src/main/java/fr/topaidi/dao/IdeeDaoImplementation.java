@@ -17,6 +17,10 @@ public class IdeeDaoImplementation implements IdeeDao {
 		this.utx = utx;
 	}
 
+	public Idea getIdee(Long id) {
+		return em.find(Idea.class, id);
+	}
+
 	public List<Idea> getListIdee() {
 		return em.createQuery("SELECT i FROM Idea i", Idea.class).getResultList();
 	}

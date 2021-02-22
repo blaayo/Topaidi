@@ -14,11 +14,11 @@
 			
 			<div class="row">
 				<div class="col s10 m12">
-				    <img class="materialboxed" width="100%" src="https://data.photofunky.net/output/image/3/6/1/7/361786/photofunky.gif">
+				    <img class="materialboxed" width="100%" src="${idea.getImage()}">
 				</div>
 				
 				<div class="col s10 m12 center">
-					<h1><b>NOM DE L'IDEE</b></h1>
+					<h1><b>${idea.getNom()}</b></h1>
 				</div>
 				
 				<div class="col s10 m12">
@@ -33,8 +33,7 @@
 				</div>
 				
 				<div class="col s10 m12">
-    				<p class="center">Une description ... I am a very simple card. I am good at containing small bits of information.
-					      I am convenient because I require little markup to use effectively.</p>
+    				<p class="center">${idea.getDescription()}</p>
 				</div>
 				
 				<div class="col s10 m12">

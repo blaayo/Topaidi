@@ -22,7 +22,7 @@
 			<div class="row">
 				<c:forEach var="idee" items="${listIdee}" >
 				
-					<div class="col s10 m4">
+					<div class="col s10 m4" style="cursor: pointer" onclick="document.location.href='idee?action=view&view=${idee.getId()}'">
 					  <div class="card">
 					    <div class="card-image">
 					      <img src="${idee.getImage()}">
@@ -32,7 +32,7 @@
 					      <p>${idee.getSubDescription()}</p>
 					    </div>
 					    <div class="card-action">
-					      <a href="idee?action=view&view=${idee.getId()}">Voir plus<b class="right">${idee.getTop() + idee.getFlop()}<i class="material-icons right">thumbs_up_down</i></b></a>
+					      <a href="#">${idee.getCreatedAt()}<b class="right">${idee.getTop() + idee.getFlop()}<i class="material-icons right">thumbs_up_down</i></b></a>
 					    </div>
 					  </div>
 					</div>

@@ -54,7 +54,6 @@ public class UserServlet extends HttpServlet{
 			user.setEmail( req.getParameter("email") );
 			user.setNom( req.getParameter("nom"), req.getParameter("prenom") );
 			user.setPassword( req.getParameter("password") );
-			user.setCreatedAt(new Date());
 			
 			if ( userService.verifEmailUser(user.getEmail()) )
 			{

@@ -26,27 +26,32 @@ public class IdeeServlet extends HttpServlet{
 		HttpSession session = req.getSession();
 		
 		req.setAttribute("isConnect", session.getAttribute("isConnect"));
-			
+
+		// AFFICHAGE CLASSEMENT
 		if(req.getParameter("action").equals("classement")) 
 		{
+			/* attribue passé à la vue */
 			req.setAttribute("listIdeeClassement", ideeService.getIdeeClassement());
 			this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ideeClassement.jsp").forward(req, resp);
 		}
+		// REDIRECTION CONNEXION PAGE
 		else if( null == session.getAttribute("isConnect"))
 		{
-			/* Redirection page home */
 	        resp.sendRedirect("connexion?action=connexion");
 		}
 		else 
 		{
-			// Affichage formulaire creation idées
+			// AFFICHAGE FORM CREATE IDEA
 			if(req.getParameter("action").equals("create"))
 			{
 				this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ideeCreate.jsp").forward(req, resp);
 			}
-			// Affichage idées
+			// AFFICHAGE IDEA
 			else if(req.getParameter("action").equals("view"))
 			{
+				/* attribue passé à la vue */
+				Long ideeId = Long.parseLong(req.getParameter("view"));
+				req.setAttribute( "idea", ideeService.getIdee(ideeId) );
 				this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ideeView.jsp").forward(req, resp);
 			}
 		}

@@ -24,6 +24,11 @@ public class IdeeServiceImplementation implements IdeeService {
 	@Resource
 	private UserTransaction utx;
 
+	public Idea getIdee(Long id) {
+		IdeeDao ideeDao = new IdeeDaoImplementation(em, utx);
+		return  ideeDao.getIdee(id);
+	}
+
 	public List<Idea> getListIdee() {
 		IdeeDao ideeDao = new IdeeDaoImplementation(em, utx);
 		return  ideeDao.getListIdee();

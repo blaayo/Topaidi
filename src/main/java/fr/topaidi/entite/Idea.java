@@ -22,11 +22,11 @@ public class Idea {
     
     private String image;
     
-    private Date createdAt;
+    private Date createdAt = new Date();
     
-    private int top;
+    private int top = 0;
     
-    private int flop;
+    private int flop = 0;
     
     @ManyToOne
     @JoinColumn(name = "user_id")
