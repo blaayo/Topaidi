@@ -12,6 +12,7 @@ import javax.transaction.UserTransaction;
 
 import fr.topaidi.dao.IdeeDao;
 import fr.topaidi.dao.IdeeDaoImplementation;
+import fr.topaidi.entite.Commentaires;
 import fr.topaidi.entite.Idea;
 
 @Stateless
@@ -28,7 +29,12 @@ public class IdeeServiceImplementation implements IdeeService {
 		IdeeDao ideeDao = new IdeeDaoImplementation(em, utx);
 		return  ideeDao.getIdee(id);
 	}
-
+/*
+	public List<Commentaires> getIdeaComments(Long id) {
+		IdeeDao ideeDao = new IdeeDaoImplementation(em, utx);
+		return  ideeDao.getIdeaComments(id);
+	}
+*/
 	public List<Idea> getListIdee() {
 		IdeeDao ideeDao = new IdeeDaoImplementation(em, utx);
 		return  ideeDao.getListIdee();

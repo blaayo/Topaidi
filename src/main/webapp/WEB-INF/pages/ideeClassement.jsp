@@ -22,17 +22,24 @@
 			<div class="row">
 				<c:forEach var="idee" items="${listIdeeClassement}" >
 				
-					<div class="col s10 m4" style="cursor: pointer" onclick="document.location.href='idee?action=view&view=${idee.getId()}'">
+					<div class="col s12 l6 xl4" style="cursor: pointer" onclick="document.location.href='idee?action=view&view=${idee.getId()}'">
 					  <div class="card">
-					    <div class="card-image">
-					      <img src="${idee.getImage()}">
+					    <div class="card-image card-bg-a" style="background-image: url('${idee.getImage()}')">
+					      <img style="opacity:0" src="https://www.suitedesoins.fr/wp-content/uploads/2016/03/fond-blanc-site-300x214.png">
 					      <span class="card-title"><b>${idee.getNom()}</b></span>
 					    </div>
 					    <div class="card-content">
-					      <p>${idee.getSubDescription()}</p>
+					      <p>${idee.getSubDescription()} <a href="#">Lire la suite</a></p>
 					    </div>
 					    <div class="card-action">
-					      <a href="#">${idee.getCreatedAt()}<b class="right">${idee.getTop()}<i class="material-icons right">thumb_up</i></b></a>
+					      <a href="#">${idee.getCreatedAt()}
+					      	<b class="right">
+					      		${idee.getTop()}<i class="material-icons right">thumb_up</i>
+					      	</b>
+					      	<b class="right" style="margin-right:15px">
+					      		${idee.getFlop()}<i class="material-icons right">thumb_down</i>
+					      	</b>
+					      </a>
 					    </div>
 					  </div>
 					</div>

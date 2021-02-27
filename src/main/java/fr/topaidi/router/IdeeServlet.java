@@ -52,6 +52,7 @@ public class IdeeServlet extends HttpServlet{
 				/* attribue passé à la vue */
 				Long ideeId = Long.parseLong(req.getParameter("view"));
 				req.setAttribute( "idea", ideeService.getIdee(ideeId) );
+				
 				this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ideeView.jsp").forward(req, resp);
 			}
 		}
