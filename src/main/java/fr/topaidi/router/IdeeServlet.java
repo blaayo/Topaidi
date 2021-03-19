@@ -1,6 +1,7 @@
 package fr.topaidi.router;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -10,7 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.topaidi.entite.Category;
+import fr.topaidi.entite.Idea;
+import fr.topaidi.service.CategorieService;
 import fr.topaidi.service.IdeeService;
+
+
 
 
 @WebServlet("/idee")
@@ -19,6 +25,8 @@ public class IdeeServlet extends HttpServlet{
 
 	@EJB
 	private IdeeService ideeService;
+	
+	@EJB private CategorieService categorieService;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
@@ -44,6 +52,7 @@ public class IdeeServlet extends HttpServlet{
 			// AFFICHAGE FORM CREATE IDEA
 			if(req.getParameter("action").equals("create"))
 			{
+				req.setAttribute("categories", categorieService.getCategories());
 				this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ideeCreate.jsp").forward(req, resp);
 			}
 			// AFFICHAGE IDEA
@@ -57,4 +66,19 @@ public class IdeeServlet extends HttpServlet{
 			}
 		}
     }
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Idea idee = new Idea();
+		Category cat = new Category();
+		cat.setName(req.getParameter("categorie"));
+		idee.setNom(req.getParameter("titre"));
+		//idee.setCategory(cat);
+		idee.setCreatedAt(new Date());
+		idee.setDescription(req.getParameter("description"));
+		idee.setImage(req.getParameter("image"));
+	}
+	
+	
+	
 }

@@ -45,5 +45,12 @@ public class IdeeServiceImplementation implements IdeeService {
 		IdeeDao ideeDao = new IdeeDaoImplementation(em, utx);
 		return  ideeDao.getIdeeClassement();
 	}
+	public void AddIdee(Idea idee) {
+		IdeeDao ideeDao = new IdeeDaoImplementation(em, utx);
+		ideeDao.AddIdee(idee);
+		
+	}
+	
+	
 	
 }

@@ -23,7 +23,7 @@
 			
 	        <div class="card-panel grey lighten-5 z-depth-1" style="margin:50px 0">
 				<div class="row">
-				  <form class="col s12">
+				  <form class="col s12" method="post">
 				  
 					   <div class="row">
 					    	<div class="input-field col s12">
@@ -49,10 +49,9 @@
 					    <div class="row">
 					    	<div class="input-field col s12">
 								<select class="form-select" aria-label="Default select example" name="categorie">
-									<option selected>Categorie</option>
-									<option value="1">One</option>
-									<option value="2">Two</option>
-									<option value="3">Three</option>
+									<c:forEach var="categorie" items="${categories}" >
+									<option value="1">${categorie.getName()}</option>
+									</c:forEach>
 								</select>
 					    	</div>
 	  					</div>
