@@ -53,24 +53,25 @@
 					        </div>
 						</c:forEach>
 						<hr/>
-		        			<div class="row ">
-							  <form action="idee" method="post" class="col s12">
-							    <div class="row">
-							    	<b>Ajouter un commentaire</b>
-							    </div>
-							    <div class="row">
-							    	<div class="input-field col s10">
-										<i class="material-icons prefix">insert_comment</i>
-										<label for="commentaire">Commentaire</label>
-										<textarea id="commentaire" class="materialize-textarea" name="commentaire"></textarea>
-							    	</div>
-								    <div class="input-field col s2">
-							      		<input type="hidden" name="action" value="addCommentaire">
-								    	<button class="waves-effect waves-light btn-large" type="submit">AJOUTER</button>
-									</div>
-							    </div>
-							  </form>
-					        </div>
+	        			<div class="row ">
+						  <form action="idee" method="post" class="col s12">
+						    <div class="row">
+						    	<b>Ajouter un commentaire</b>
+						    </div>
+						    <div class="row">
+						    	<div class="input-field col s10">
+									<i class="material-icons prefix">insert_comment</i>
+									<label for="commentaire">Commentaire</label>
+									<textarea required id="commentaire" class="materialize-textarea" name="commentaire"></textarea>
+						    	</div>
+							    <div class="input-field col s2">
+						      		<input type="hidden" name="idea" value="${idea.getId()}">
+						      		<input type="hidden" name="action" value="addCommentaire">
+							    	<button class="waves-effect waves-light btn-large" type="submit">AJOUTER</button>
+								</div>
+						    </div>
+						  </form>
+				        </div>
 	        		</div>
 				</div>                     
 			</div>
@@ -78,12 +79,6 @@
 		</div>
 		
 		<%@include file="commons/footer.jsp" %>
-		<script type="text/javascript">
-			document.addEventListener('DOMContentLoaded', function() {
-			    var elems = document.querySelectorAll('.materialboxed');
-			    var instances = M.Materialbox.init(elems, options);
-			  });
-		</script>
 			
 	</body>
 </html>

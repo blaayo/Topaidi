@@ -35,8 +35,8 @@ public class IdeeServlet extends HttpServlet{
 		// AFFICHAGE CLASSEMENT
 		if(req.getParameter("action").equals("classement")) 
 		{
-			/* attribue passé à la vue */
 			req.setAttribute("listIdeeClassement", ideeService.getIdeeClassement());
+			
 			this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ideeClassement.jsp").forward(req, resp);
 		}
 		// REDIRECTION CONNEXION PAGE
@@ -54,8 +54,8 @@ public class IdeeServlet extends HttpServlet{
 			// AFFICHAGE IDEA
 			else if(req.getParameter("action").equals("view"))
 			{
-				/* attribue passé à la vue */
 				Long ideeId = Long.parseLong(req.getParameter("view"));
+				
 				req.setAttribute( "idea", ideeService.getIdee(ideeId) );
 				req.setAttribute( "comments", commentaireService.getCommentsByIdea(ideeId) );
 				
@@ -72,10 +72,18 @@ public class IdeeServlet extends HttpServlet{
 		if(req.getParameter("action").equals("addCommentaire")) 
 		{
 			Commentaires commentaire = new Commentaires();
+			Long ideeId = Long.parseLong(req.getParameter("idea"));
 			
 			commentaire.setContent(req.getParameter("commentaire"));
 			commentaire.setUser((Users) session.getAttribute("user"));
-			commentaire.setIdea(null);
+			commentaire.setIdea(ideeService.getIdee(ideeId));
+			
+			commentaireService.addCommentaire(commentaire);
+			
+			req.setAttribute( "idea", ideeService.getIdee(ideeId) );
+			req.setAttribute( "comments", commentaireService.getCommentsByIdea(ideeId) );
+			
+			this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ideeView.jsp").forward(req, resp);
 		}
     }
 }
