@@ -14,6 +14,10 @@ import javax.servlet.http.HttpSession;
 import fr.topaidi.entite.Category;
 import fr.topaidi.entite.Idea;
 import fr.topaidi.service.CategorieService;
+import fr.topaidi.entite.Commentaires;
+import fr.topaidi.entite.Users;
+import fr.topaidi.service.CommentaireService;
+
 import fr.topaidi.service.IdeeService;
 
 
@@ -25,6 +29,8 @@ public class IdeeServlet extends HttpServlet{
 
 	@EJB
 	private IdeeService ideeService;
+	@EJB
+	private CommentaireService commentaireService;
 	
 	@EJB private CategorieService categorieService;
 	
@@ -61,14 +67,27 @@ public class IdeeServlet extends HttpServlet{
 				/* attribue passé à la vue */
 				Long ideeId = Long.parseLong(req.getParameter("view"));
 				req.setAttribute( "idea", ideeService.getIdee(ideeId) );
+				req.setAttribute( "comments", commentaireService.getCommentsByIdea(ideeId) );
 				
 				this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ideeView.jsp").forward(req, resp);
 			}
 		}
     }
 	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+			HttpSession session = req.getSession();
+		
+		// AJOUT DE COMMENTAIRE
+		if(req.getParameter("action").equals("addCommentaire")) 
+		{
+			Commentaires commentaire = new Commentaires();
+			
+			commentaire.setContent(req.getParameter("commentaire"));
+			commentaire.setUser((Users) session.getAttribute("user"));
+			commentaire.setIdea(null);
+		}
 		Idea idee = new Idea();
 		Category cat = new Category();
 		cat.setName(req.getParameter("categorie"));
@@ -80,5 +99,6 @@ public class IdeeServlet extends HttpServlet{
 	}
 	
 	
-	
+
+
 }

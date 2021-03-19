@@ -39,22 +39,22 @@
 				<div class="col s10 m12">
         			<div class="card-panel grey lighten-5 z-depth-1" style="margin:50px 0;">
 						<!-- Temporaire -->
-						<% for(int i = 0; i < 5; i+=1) { %>
+						<c:forEach var="comment" items="${comments}" >
 		        			<div class="row">
 					            <div class="col s1 center">
 					              <i class="medium material-icons">account_circle</i>
 					            </div>
 					            <div class="col s11">
-									<b>Pseudo</b>
+									<b>${comment.getUser().getNom()}</b>
 					            </div>
 							    <blockquote>
-							      This is an example quotation that uses the blockquote tag.
+							      ${comment.getContent()}
 							    </blockquote>
 					        </div>
-						<% } %>
+						</c:forEach>
 						<hr/>
 		        			<div class="row ">
-							  <form class="col s12">
+							  <form action="idee" method="post" class="col s12">
 							    <div class="row">
 							    	<b>Ajouter un commentaire</b>
 							    </div>
@@ -65,7 +65,7 @@
 										<textarea id="commentaire" class="materialize-textarea" name="commentaire"></textarea>
 							    	</div>
 								    <div class="input-field col s2">
-							      		<input type="hidden" name="commentaire">
+							      		<input type="hidden" name="action" value="addCommentaire">
 								    	<button class="waves-effect waves-light btn-large" type="submit">AJOUTER</button>
 									</div>
 							    </div>
