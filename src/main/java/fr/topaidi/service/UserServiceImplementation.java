@@ -1,5 +1,7 @@
 package fr.topaidi.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
@@ -30,16 +32,16 @@ public class UserServiceImplementation implements UserService {
 		userDao.addUser(user);
 	}
 
-	public boolean verifUser(String email, String pass) {
+	public List<Users> getUserByEmailPass(String email, String pass) {
 		// TODO Auto-generated method stub
 		UserDao userDao = new UserDaoImplementation(em, utx);
-		return userDao.verifUser(email, pass);
+		return userDao.getUserByEmailPass(email, pass);
 	}
 
-	public boolean verifEmailUser(String email) {
+	public List<Users> getUserByEmail(String email) {
 		// TODO Auto-generated method stub
 		UserDao userDao = new UserDaoImplementation(em, utx);
-		return userDao.verifEmailUser(email);
+		return userDao.getUserByEmail(email);
 	}
 
 	public Users getUser(int id) {

@@ -55,7 +55,7 @@ public class UserServlet extends HttpServlet{
 			user.setNom( req.getParameter("nom"), req.getParameter("prenom") );
 			user.setPassword( req.getParameter("password") );
 			
-			if ( userService.verifEmailUser(user.getEmail()) )
+			if ( userService.getUserByEmail(user.getEmail()).isEmpty() )
 			{
 				/* Ajout de l'utilisateur dans la BDD */
 				userService.addUser(user);
@@ -77,20 +77,21 @@ public class UserServlet extends HttpServlet{
 			/* Inscription de l'utilisateur */
 			String email 	= req.getParameter("email");
 			String password = req.getParameter("password");
-			if ( !userService.verifUser(email,password) )
-			{
-				/* creation de la session */
-				HttpSession session = req.getSession();
-		        session.setAttribute("isConnect", true);
-				/* Redirection page home */
-		        resp.sendRedirect("home");
-			}
-			else
+			if ( userService.getUserByEmailPass(email,password).isEmpty() )
 			{
 				/* Affichage de la page de connexion */
 				String error = "<p class='red-text text-lighten-1'>Email ou mot de passe incorect</p>";
 				req.setAttribute("error", error);
 				this.getServletContext().getRequestDispatcher("/WEB-INF/pages/connexion.jsp").forward(req, resp);
+			}
+			else
+			{
+				/* creation de la session */
+				HttpSession session = req.getSession();
+		        session.setAttribute("user", userService.getUserByEmailPass(email,password));
+		        session.setAttribute("isConnect", true);
+				/* Redirection page home */
+		        resp.sendRedirect("home");
 			}
 	    }
 	}

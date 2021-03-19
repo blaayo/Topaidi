@@ -54,7 +54,7 @@ public class UserDaoImplementation implements UserDao {
 		
 	}
 
-	public boolean verifUser(String email, String pass) {
+	public List<Users> getUserByEmailPass(String email, String pass) {
 		// TODO Auto-generated method stub
 		String sql   = "select u from Users u where u.email = :email And u.password = :pass ";		
 		Query  query = em.createQuery(sql, Users.class);
@@ -62,14 +62,14 @@ public class UserDaoImplementation implements UserDao {
 		query.setParameter("pass", pass);
 		
 		List<Users> user = (List<Users>) query.getResultList();
-		return user.isEmpty();
+		return user;
 	}
 
-	public boolean verifEmailUser(String email) {
+	public List<Users> getUserByEmail(String email) {
 		// TODO Auto-generated method stub
 		Query  query = em.createQuery("select u from Users u where u.email = :email", Users.class).setParameter("email", email);
 		List<Users> user = (List<Users>) query.getResultList();		
-		return user.isEmpty();
+		return user;
 	}
 	
 	public Users getUser(int id) {

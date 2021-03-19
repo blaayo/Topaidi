@@ -26,3 +26,9 @@
 		</div>
 	</div>
 </footer>
+
+<script>
+    $(document).ready(function(){
+        M.AutoInit();
+    });
+</script>

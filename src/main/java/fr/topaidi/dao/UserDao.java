@@ -1,5 +1,6 @@
 package fr.topaidi.dao;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
@@ -10,9 +11,9 @@ public interface UserDao {
 
 	void addUser(Users user);
 
-	boolean verifUser(String email, String pass);
+	List<Users> getUserByEmailPass(String email, String pass);
 
-	boolean verifEmailUser(String email);
+	List<Users> getUserByEmail(String email);
 
 	Users getUser(int id);
 
