@@ -23,7 +23,11 @@
 			
 	        <div class="card-panel grey lighten-5 z-depth-1" style="margin:50px 0">
 				<div class="row">
+<<<<<<< HEAD
+				  <form class="col s12" method="post">
+=======
 				  <form method="post" class="col s12">
+>>>>>>> 31e129ab12cb69b6c8d75cac8d68550cc73b55bc
 				  
 					   <div class="row">
 					    	<div class="input-field col s12">
@@ -48,6 +52,13 @@
 					    </div>					    	  
 					    <div class="row">
 					    	<div class="input-field col s12">
+<<<<<<< HEAD
+								<select class="form-select" aria-label="Default select example" name="categorie">
+									<c:forEach var="categorie" items="${categories}" >
+									<option value="1">${categorie.getName()}</option>
+									</c:forEach>
+								</select>
+=======
 								<div class="input-field col s12">
 								    <select>
 								      <option value="" disabled selected>Choisir une categorie</option>
@@ -57,6 +68,7 @@
 								    </select>
 								    <label>Catégorie</label>
 								  </div>
+>>>>>>> 31e129ab12cb69b6c8d75cac8d68550cc73b55bc
 					    	</div>
 	  					</div>
 					    <div class="center-align">

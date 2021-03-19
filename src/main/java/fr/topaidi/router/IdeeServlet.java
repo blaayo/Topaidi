@@ -1,6 +1,7 @@
 package fr.topaidi.router;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -10,10 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.topaidi.entite.Category;
+import fr.topaidi.entite.Idea;
+import fr.topaidi.service.CategorieService;
 import fr.topaidi.entite.Commentaires;
 import fr.topaidi.entite.Users;
 import fr.topaidi.service.CommentaireService;
+
 import fr.topaidi.service.IdeeService;
+
+
 
 
 @WebServlet("/idee")
@@ -24,6 +31,8 @@ public class IdeeServlet extends HttpServlet{
 	private IdeeService ideeService;
 	@EJB
 	private CommentaireService commentaireService;
+	
+	@EJB private CategorieService categorieService;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
@@ -49,6 +58,7 @@ public class IdeeServlet extends HttpServlet{
 			// AFFICHAGE FORM CREATE IDEA
 			if(req.getParameter("action").equals("create"))
 			{
+				req.setAttribute("categories", categorieService.getCategories());
 				this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ideeCreate.jsp").forward(req, resp);
 			}
 			// AFFICHAGE IDEA
@@ -64,9 +74,10 @@ public class IdeeServlet extends HttpServlet{
 		}
     }
 	
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
-    {
-		HttpSession session = req.getSession();
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+			HttpSession session = req.getSession();
 		
 		// AJOUT DE COMMENTAIRE
 		if(req.getParameter("action").equals("addCommentaire")) 
@@ -85,5 +96,17 @@ public class IdeeServlet extends HttpServlet{
 			
 			this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ideeView.jsp").forward(req, resp);
 		}
-    }
+		Idea idee = new Idea();
+		Category cat = new Category();
+		cat.setName(req.getParameter("categorie"));
+		idee.setNom(req.getParameter("titre"));
+		//idee.setCategory(cat);
+		idee.setCreatedAt(new Date());
+		idee.setDescription(req.getParameter("description"));
+		idee.setImage(req.getParameter("image"));
+	}
+	
+	
+
+
 }

@@ -12,4 +12,6 @@ public interface IdeeService {
 	List<Idea> getListIdee();
 	List<Idea> getIdeeClassement();
 	
+	void AddIdee(Idea idee);
+	
 }
