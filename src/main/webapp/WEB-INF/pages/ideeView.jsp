@@ -39,19 +39,19 @@
 				<div class="col s10 m12">
         			<div class="card-panel grey lighten-5 z-depth-1" style="margin:50px 0;">
 						<!-- Temporaire -->
-						<% for(int i = 0; i < 5; i+=1) { %>
+						<c:forEach var="comment" items="${comments}" >
 		        			<div class="row">
 					            <div class="col s1 center">
 					              <i class="medium material-icons">account_circle</i>
 					            </div>
 					            <div class="col s11">
-									<b>Pseudo</b>
+									<b>${comment.getUser().getNom()}</b>
 					            </div>
 							    <blockquote>
-							      This is an example quotation that uses the blockquote tag.
+							      ${comment.getContent()}
 							    </blockquote>
 					        </div>
-						<% } %>
+						</c:forEach>
 						<hr/>
 		        			<div class="row ">
 							  <form class="col s12">

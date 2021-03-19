@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.topaidi.service.CommentaireService;
 import fr.topaidi.service.IdeeService;
 
 
@@ -19,6 +20,8 @@ public class IdeeServlet extends HttpServlet{
 
 	@EJB
 	private IdeeService ideeService;
+	@EJB
+	private CommentaireService commentaireService;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
@@ -52,6 +55,7 @@ public class IdeeServlet extends HttpServlet{
 				/* attribue passé à la vue */
 				Long ideeId = Long.parseLong(req.getParameter("view"));
 				req.setAttribute( "idea", ideeService.getIdee(ideeId) );
+				req.setAttribute( "comments", commentaireService.getCommentsByIdea(ideeId) );
 				
 				this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ideeView.jsp").forward(req, resp);
 			}
