@@ -76,8 +76,9 @@ public class IdeeServlet extends HttpServlet{
 	
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			HttpSession session = req.getSession();
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
+	{
+		HttpSession session = req.getSession();
 		
 		// AJOUT DE COMMENTAIRE
 		if(req.getParameter("action").equals("addCommentaire")) 
@@ -96,6 +97,7 @@ public class IdeeServlet extends HttpServlet{
 			
 			this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ideeView.jsp").forward(req, resp);
 		}
+		
 		Idea idee = new Idea();
 		Category cat = new Category();
 		cat.setName(req.getParameter("categorie"));
@@ -106,7 +108,5 @@ public class IdeeServlet extends HttpServlet{
 		idee.setImage(req.getParameter("image"));
 	}
 	
-	
-
 
 }

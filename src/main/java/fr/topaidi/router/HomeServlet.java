@@ -27,6 +27,7 @@ public class HomeServlet extends HttpServlet{
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
+		/*
 		Category category = new Category();
 		category.setName("Litterature");
 		categorieService.addCategories(category);
@@ -36,6 +37,7 @@ public class HomeServlet extends HttpServlet{
 		Category category2 = new Category();
 		category2.setName("Jeux-videos");
 		categorieService.addCategories(category2);
+		*/
 		
 		HttpSession session = req.getSession();
 		req.setAttribute("isConnect", session.getAttribute("isConnect"));

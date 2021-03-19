@@ -6,7 +6,6 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>Ajouter</title>
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 		<%@include file="commons/header.jsp" %>
 	</head>
 	<body>
@@ -23,11 +22,7 @@
 			
 	        <div class="card-panel grey lighten-5 z-depth-1" style="margin:50px 0">
 				<div class="row">
-<<<<<<< HEAD
 				  <form class="col s12" method="post">
-=======
-				  <form method="post" class="col s12">
->>>>>>> 31e129ab12cb69b6c8d75cac8d68550cc73b55bc
 				  
 					   <div class="row">
 					    	<div class="input-field col s12">
@@ -52,28 +47,22 @@
 					    </div>					    	  
 					    <div class="row">
 					    	<div class="input-field col s12">
-<<<<<<< HEAD
-								<select class="form-select" aria-label="Default select example" name="categorie">
-									<c:forEach var="categorie" items="${categories}" >
-									<option value="1">${categorie.getName()}</option>
-									</c:forEach>
-								</select>
-=======
 								<div class="input-field col s12">
 								    <select>
 								      <option value="" disabled selected>Choisir une categorie</option>
-								      <option value="1">Option 1</option>
-								      <option value="2">Option 2</option>
-								      <option value="3">Option 3</option>
+								      	<c:forEach var="categorie" items="${categories}" >
+										<option value="1">${categorie.getName()}</option>
+										</c:forEach>
 								    </select>
 								    <label>Catégorie</label>
-								  </div>
->>>>>>> 31e129ab12cb69b6c8d75cac8d68550cc73b55bc
+							     </div>
 					    	</div>
-	  					</div>
-					    <div class="center-align">
-					      	<input type="hidden" name="action" value="create">
-					    	<button class="waves-effect waves-light btn-large" type="submit">Créer</button>
+	  					</div>	    	  
+					    <div class="row">
+						    <div class="center-align col s12">
+						      	<input type="hidden" name="action" value="create">
+						    	<button class="waves-effect waves-light btn-large" type="submit">Créer</button>
+							</div>
 						</div>
 				  </form>
 				</div>
