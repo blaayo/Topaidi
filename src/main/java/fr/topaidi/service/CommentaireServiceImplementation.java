@@ -27,6 +27,11 @@ public class CommentaireServiceImplementation implements CommentaireService {
 	@Resource
 	private UserTransaction utx;
 
+	public void addCommentaire(Commentaires comments) {
+		CommentaireDao commentaireDao = new CommentaireDaoImplementation(em, utx);
+		commentaireDao.addCommentaire(comments);
+	}
+
 	public List<Commentaires> getCommentsByIdea(Long IdIdea) {
 		CommentaireDao commentaireDao = new CommentaireDaoImplementation(em, utx);
 		IdeeDao ideaDao = new IdeeDaoImplementation(em, utx);

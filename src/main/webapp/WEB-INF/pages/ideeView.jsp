@@ -54,7 +54,7 @@
 						</c:forEach>
 						<hr/>
 		        			<div class="row ">
-							  <form class="col s12">
+							  <form action="idee" method="post" class="col s12">
 							    <div class="row">
 							    	<b>Ajouter un commentaire</b>
 							    </div>
@@ -65,7 +65,7 @@
 										<textarea id="commentaire" class="materialize-textarea" name="commentaire"></textarea>
 							    	</div>
 								    <div class="input-field col s2">
-							      		<input type="hidden" name="commentaire">
+							      		<input type="hidden" name="action" value="addCommentaire">
 								    	<button class="waves-effect waves-light btn-large" type="submit">AJOUTER</button>
 									</div>
 							    </div>
