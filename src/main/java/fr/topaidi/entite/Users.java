@@ -27,6 +27,10 @@ public class Users {
     
     @OneToMany(mappedBy = "user")
     private List<Idea> idees = new ArrayList<Idea>();
+    
+    public Long getId() {
+    	return id;
+    }
 
 	public String getEmail() {
 		return email;

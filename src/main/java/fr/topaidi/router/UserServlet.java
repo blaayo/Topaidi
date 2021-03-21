@@ -2,6 +2,7 @@ package fr.topaidi.router;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -88,7 +89,7 @@ public class UserServlet extends HttpServlet{
 			{
 				/* creation de la session */
 				HttpSession session = req.getSession();
-		        session.setAttribute("user", userService.getUserByEmailPass(email,password));
+		        session.setAttribute("user", userService.getUserByEmailPass(email,password).get(0));
 		        session.setAttribute("isConnect", true);
 				/* Redirection page home */
 		        resp.sendRedirect("home");
