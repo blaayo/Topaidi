@@ -37,6 +37,7 @@ public class IdeeServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {
+		// DEMARAGE DE LA SESSION
 		HttpSession session = req.getSession();
 		
 		req.setAttribute("isConnect", session.getAttribute("isConnect"));
@@ -78,6 +79,7 @@ public class IdeeServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
+		// DEMARAGE DE LA SESSION
 		HttpSession session = req.getSession();
 		
 		// AJOUT DE COMMENTAIRE
@@ -98,14 +100,18 @@ public class IdeeServlet extends HttpServlet{
 			this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ideeView.jsp").forward(req, resp);
 		}
 		
-		Idea idee = new Idea();
-		Category cat = new Category();
-		cat.setName(req.getParameter("categorie"));
-		idee.setNom(req.getParameter("titre"));
-		//idee.setCategory(cat);
-		idee.setCreatedAt(new Date());
-		idee.setDescription(req.getParameter("description"));
-		idee.setImage(req.getParameter("image"));
+		// AJOUT D'UNE IDEE
+		if(req.getParameter("action").equals("addIdea")) 
+		{
+			Idea idee = new Idea();
+			Category cat = new Category();
+			cat.setName(req.getParameter("categorie"));
+			idee.setNom(req.getParameter("titre"));
+			//idee.setCategory(cat);
+			idee.setCreatedAt(new Date());
+			idee.setDescription(req.getParameter("description"));
+			idee.setImage(req.getParameter("image"));
+		}
 	}
 	
 

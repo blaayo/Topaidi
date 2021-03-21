@@ -60,7 +60,7 @@
 	  					</div>	    	  
 					    <div class="row">
 						    <div class="center-align col s12">
-						      	<input type="hidden" name="action" value="create">
+						      	<input type="hidden" name="action" value="addIdea">
 						    	<button class="waves-effect waves-light btn-large" type="submit">Créer</button>
 							</div>
 						</div>
