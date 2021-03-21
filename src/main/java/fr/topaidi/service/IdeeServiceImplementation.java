@@ -47,8 +47,15 @@ public class IdeeServiceImplementation implements IdeeService {
 	}
 	public void AddIdee(Idea idee) {
 		IdeeDao ideeDao = new IdeeDaoImplementation(em, utx);
-		ideeDao.AddIdee(idee);
-		
+		ideeDao.AddIdee(idee);		
+	}
+	public void addTop(Long id) {
+		IdeeDao ideeDao = new IdeeDaoImplementation(em, utx);
+		ideeDao.addTop(id);		
+	}
+	public void addFlop(Long id) {
+		IdeeDao ideeDao = new IdeeDaoImplementation(em, utx);
+		ideeDao.addFlop(id);		
 	}
 	
 	

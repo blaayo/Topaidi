@@ -11,9 +11,7 @@ import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
-import fr.topaidi.entite.Commentaires;
 import fr.topaidi.entite.Idea;
-import fr.topaidi.entite.Users;
 
 public class IdeeDaoImplementation implements IdeeDao {
 	
@@ -56,11 +54,78 @@ public class IdeeDaoImplementation implements IdeeDao {
 		
 	}
 
+	public void addTop(Long id) {
+
+		try {
+			utx.begin();
+		    Query query = em.createQuery("UPDATE Idea i SET i.top = i.top + 1 WHERE i.id = :id");
+		    query.setParameter("id", id);
+		    query.executeUpdate();
+			utx.commit();
+		} catch (NotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SystemException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (RollbackException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (HeuristicMixedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (HeuristicRollbackException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	public void addFlop(Long id) {
+
+		try {
+			utx.begin();
+		    Query query = em.createQuery("UPDATE Idea i SET i.flop = i.flop + 1 WHERE i.id = :id ");
+		    query.setParameter("id", id);
+		    query.executeUpdate();
+			utx.commit();
+		} catch (NotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SystemException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (RollbackException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (HeuristicMixedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (HeuristicRollbackException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public Idea getIdee(Long id) {
 		return em.find(Idea.class, id);
 	}
 /*
 	public List<Commentaires> getIdeaComments(Long id) {
+
 		String sql = "select c from Commentaires c join users u on c.user_id join idea i on c.idea_id = :id";
 		return em.createQuery(sql, Commentaires.class).setParameter("id", id).getResultList();
 	}
@@ -70,7 +135,6 @@ public class IdeeDaoImplementation implements IdeeDao {
 	}
 
 	public List<Idea> getIdeeClassement() {
-		// Ne fonctionne pas, la requete est bizzare !
 		String sql = "SELECT i FROM Idea i group by i.id order by i.top DESC, SUM(i.top + i.flop) DESC, i.createdAt DESC";
 		return em.createQuery(sql, Idea.class).getResultList();
 	}

@@ -106,8 +106,4 @@ public class Idea {
         this.category = category;
     }
     
-    public String getSubDescription() {
-    	return this.description.substring(0,100) + "...";
-    }
-    
 }

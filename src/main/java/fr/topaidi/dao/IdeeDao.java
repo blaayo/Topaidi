@@ -10,6 +10,9 @@ public interface IdeeDao {
 	
 	
 	void AddIdee(Idea idee);
+	void addTop(Long id);
+	void addFlop(Long id);
+	
 	Idea getIdee(Long id);	
 	//List<Commentaires> getIdeaComments(Long id);
 	List<Idea> getListIdee();

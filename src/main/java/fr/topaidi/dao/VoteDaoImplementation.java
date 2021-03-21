@@ -1,9 +1,6 @@
 package fr.topaidi.dao;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.transaction.HeuristicMixedException;
 import javax.transaction.HeuristicRollbackException;
 import javax.transaction.NotSupportedException;
@@ -11,25 +8,23 @@ import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
-import fr.topaidi.entite.Category;
-import fr.topaidi.entite.Idea;
-import fr.topaidi.entite.Users;
+import fr.topaidi.entite.Vote;
 
-public class CategoriesDaoImplementation implements CategoriesDao {
+public class VoteDaoImplementation implements VoteDao {
 	
 	private EntityManager em;
 	private UserTransaction utx;
 	
-	public CategoriesDaoImplementation(EntityManager em, UserTransaction utx) {
+	public VoteDaoImplementation(EntityManager em, UserTransaction utx) {
 		this.em = em;
 		this.utx = utx;
 	}
 
-	public void addCategories(Category categories) {
+	public void addVote(Vote vote) {
 		
 		try {
 			utx.begin();
-			em.persist(categories);
+			em.persist(vote);
 			utx.commit();
 		} catch (NotSupportedException e) {
 			// TODO Auto-generated catch block
@@ -54,15 +49,6 @@ public class CategoriesDaoImplementation implements CategoriesDao {
 			e.printStackTrace();
 		} 
 		
-	}
-
-	
-	public List<Category> getCategories() {
-		return em.createQuery("SELECT c FROM Category c", Category.class).getResultList();
-	}
-
-	public Category getCategorieById(Long id) {
-		return em.find(Category.class, id);
 	}
 
 }

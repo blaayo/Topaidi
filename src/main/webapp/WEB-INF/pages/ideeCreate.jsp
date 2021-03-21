@@ -22,20 +22,20 @@
 			
 	        <div class="card-panel grey lighten-5 z-depth-1" style="margin:50px 0">
 				<div class="row">
-				  <form class="col s12" method="post">
+				  <form class="col s12" method="post" action="idee">
 				  
 					   <div class="row">
 					    	<div class="input-field col s12">
 								<i class="material-icons prefix">mode_edit</i>
-								<label for="titre">Titre</label>
-								<input id="titre" class="validate" name="titre"></input>
+								<input id="icon_titre" type="tel" class="validate" name="titre">
+								<label for="icon_titre">Titre</label>
 					    	</div>
 					   </div>
 				       <div class="row">
 					    	<div class="input-field col s12">
-								<i class="material-icons prefix">insert_photo</i>
-								<label for="image">Url de l'image</label>
-								<input id="image" class="validate" name="image"></input>
+						        <i class="material-icons prefix">insert_photo</i>
+						        <input id="icon_image" type="text" class="validate" name="image">
+						        <label for="icon_image">Url de l'image</label>
 					    	</div>
 					    </div>
 					    <div class="row">
@@ -48,10 +48,10 @@
 					    <div class="row">
 					    	<div class="input-field col s12">
 								<div class="input-field col s12">
-								    <select>
+								    <select name="categorie">
 								      <option value="" disabled selected>Choisir une categorie</option>
 								      	<c:forEach var="categorie" items="${categories}" >
-										<option value="1">${categorie.getName()}</option>
+										<option value="${categorie.getId()}">${categorie.getName()}</option>
 										</c:forEach>
 								    </select>
 								    <label>Catégorie</label>

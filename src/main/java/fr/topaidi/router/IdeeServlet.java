@@ -94,23 +94,44 @@ public class IdeeServlet extends HttpServlet{
 			
 			commentaireService.addCommentaire(commentaire);
 			
-			req.setAttribute( "idea", ideeService.getIdee(ideeId) );
-			req.setAttribute( "comments", commentaireService.getCommentsByIdea(ideeId) );
-			
-			this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ideeView.jsp").forward(req, resp);
+			resp.sendRedirect("idee?action=view&view="+ideeId);
 		}
 		
 		// AJOUT D'UNE IDEE
 		if(req.getParameter("action").equals("addIdea")) 
 		{
+			Long idCat	 = Long.parseLong(req.getParameter("categorie"));
+			Category cat = categorieService.getCategorieById(idCat);
+
 			Idea idee = new Idea();
-			Category cat = new Category();
-			cat.setName(req.getParameter("categorie"));
 			idee.setNom(req.getParameter("titre"));
-			//idee.setCategory(cat);
-			idee.setCreatedAt(new Date());
-			idee.setDescription(req.getParameter("description"));
 			idee.setImage(req.getParameter("image"));
+			idee.setDescription(req.getParameter("description"));
+			idee.setCategory(cat);
+			
+			ideeService.AddIdee(idee);
+			
+			resp.sendRedirect("home");
+		}
+		
+		// VOTE TOP
+		if(req.getParameter("action").equals("votetop")) 
+		{
+			Long ideeId = Long.parseLong(req.getParameter("idea"));
+			
+			ideeService.addTop(ideeId);
+			
+			resp.sendRedirect("idee?action=view&view="+ideeId);
+		}
+		
+		// VOTE FLOP
+		if(req.getParameter("action").equals("voteflop")) 
+		{
+			Long ideeId = Long.parseLong(req.getParameter("idea"));
+			
+			ideeService.addFlop(ideeId);
+			
+			resp.sendRedirect("idee?action=view&view="+ideeId);
 		}
 	}
 	

@@ -13,5 +13,7 @@ public interface IdeeService {
 	List<Idea> getIdeeClassement();
 	
 	void AddIdee(Idea idee);
+	void addTop(Long id);
+	void addFlop(Long id);
 	
 }

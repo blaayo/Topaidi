@@ -13,6 +13,7 @@ public interface CategoriesDao {
 	void addCategories(Category categories);
 
 	List<Category> getCategories();
-
+	
+	Category getCategorieById(Long id);
 
 }

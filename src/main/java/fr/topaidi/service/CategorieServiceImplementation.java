@@ -41,6 +41,9 @@ public class CategorieServiceImplementation implements CategorieService {
 		return cat.getCategories();
 	}
 
-
+	public Category getCategorieById(Long id) {
+		CategoriesDao cat = new CategoriesDaoImplementation(em, utx);
+		return cat.getCategorieById(id);
+	}
 
 }

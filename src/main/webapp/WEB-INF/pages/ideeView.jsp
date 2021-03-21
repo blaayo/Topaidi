@@ -23,12 +23,16 @@
 				
 				<div class="col s10 m12">
     				<div class="col s10 m5"></div>
-    				<div class="col s10 m1">
-			  			<a class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">thumb_up</i></a>
-					</div>
-    				<div class="col s10 m1">
-			  			<a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">thumb_down</i></a>
-					</div>
+    				<form class="col s10 m1" action="idee" method="post" >
+						<input type="hidden" name="action" value="voteflop">
+			      		<input type="hidden" name="idea" value="${idea.getId()}">
+			  			<button type="submit" name="top" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">thumb_down</i></button>
+					</form>
+    				<form class="col s10 m1" action="idee" method="post" >
+						<input type="hidden" name="action" value="votetop">
+			      		<input type="hidden" name="idea" value="${idea.getId()}">
+			  			<button type="submit" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">thumb_up</i></button>
+					</form>
     				<div class="col s10 m5"></div>
 				</div>
 				

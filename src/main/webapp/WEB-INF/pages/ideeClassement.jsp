@@ -29,7 +29,7 @@
 					      <span class="card-title"><b>${idee.getNom()}</b></span>
 					    </div>
 					    <div class="card-content">
-					      <p>${idee.getSubDescription()} <a href="#">Lire la suite</a></p>
+					      <p>${idee.getDescription()} <a href="#">voir plus</a></p>
 					    </div>
 					    <div class="card-action">
 					      <a href="#">${idee.getCreatedAt()}

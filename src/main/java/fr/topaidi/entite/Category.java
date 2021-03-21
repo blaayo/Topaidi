@@ -23,6 +23,10 @@ public class Category {
     @OneToMany(mappedBy = "category")
     private List<Idea> idees = new ArrayList<Idea>();
    
+    public Long getId() {
+        return id;
+    }
+   
     public String getName() {
         return name;
     }
